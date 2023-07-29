@@ -1,25 +1,60 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React from "react";
+import hazel from "./imgs/hazel.jpg";
+import whiskey from "./imgs/whiskey.jpg";
+import tubby from "./imgs/tubby.jpg";
+import Navbar from "./Navbar";
+import AppRoutes from "./AppRoutes";
 
-function App() {
+// Define the dogs array outside the component function
+const dogs = [
+  {
+    name: "Whiskey",
+    age: 5,
+    src: whiskey,
+    facts: [
+      "Whiskey loves eating popcorn.",
+      "Whiskey is a terrible guard dog.",
+      "Whiskey wants to cuddle with you!",
+    ],
+  },
+  {
+    name: "Hazel",
+    age: 3,
+    src: hazel,
+    facts: [
+      "Hazel has soooo much energy!",
+      "Hazel is highly intelligent.",
+      "Hazel loves people more than dogs.",
+    ],
+  },
+  {
+    name: "Tubby",
+    age: 4,
+    src: tubby,
+    facts: [
+      "Tubby is not the brightest dog",
+      "Tubby does not like walks or exercise.",
+      "Tubby loves eating food.",
+    ],
+  },
+];
+
+function App(props) {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Navbar dogs={props.dogs} />
+      <div className="container">
+        <AppRoutes dogs={props.dogs} />
+      </div>
     </div>
   );
 }
+
+App.defaultProps = {
+  dogs: dogs,
+};
+
+// Set the dogs array as the default props for the App component
 
 export default App;
